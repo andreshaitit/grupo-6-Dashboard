@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/aad721d8a3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Registro</title>
+</head>
+<body>
+    <!--Menu-->
+    <%- include('../partials/header.ejs') %>
+    <!--Fin Menu-->
+
+<!--Cuerpo-->
+<main>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Registrarse</h1>
+                <p>Ingresá tus datos para crear tu cuenta</p>
+            </div>         
+            <div class="offset-lg-4 col-lg-4 text-center">
+                <form action="/user/register" method="POST">
+                    
+                    <input class="form-control" type="text" name="firstName" placeholder="Nombre">
+                    
+                    <input class="form-control" type="text" name="lastName" placeholder="Apellido">
+                    
+                    <input class="form-control" type="email" name="email" placeholder="Correo">
+                    
+                    <input class="form-control" type="password" name="password" placeholder="Contraseña" />
+                    
+                    <input class="form-control" type="password" name="passwordConfirmation" placeholder="Repite la contraseña" />
+                  
+                    <input class="form-control" type="file" name="image" id="image" />
+                    
+                    <input type="checkbox" id="cbox1" value="first_checkbox" class="checkbox mt-3" required/> 
+                    <label class="label-control">
+                        Al registrarse acepta nuestro <a href="#" style="color: #7b3ec8;">términos y condiciones</a>
+                    </label>
+                    
+                    <button class="btn btn-primary w-100 mt-3" type="submit">Registrarme</button>
+                    
+                </form>
+                    
+                
+                    <div class="mt-3">
+                        <p class="mt-2">¿Ya tenés cuenta? Inicia sesión <a href="http://localhost:3005/user/login">acá</a></p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- <section class="login">
+            <div class="login-formulario item-flex">
+                <h2><i class="fa-solid fa-user"></i> Registrarse</h2>
+                <form action="/user/register" method="POST" enctype="multipart/form-data">
+                    <div class="nom-ape">
+                        <input type="text" name="firstName" placeholder="Nombre">
+                        <input type="text" name="lastName" placeholder="Apellido">
+                    </div>
+                    <div class="inputForm">
+                        <input type="email" name="email" required placeholder="Correo">
+                    </div>
+
+                    <div class="inputForm">
+                        <input type="password" name="password" required placeholder="Contraseña">
+                    </div>
+
+                    <div class="inputForm">
+                        <input type="password" name="password1" required placeholder="Repetir Contraseña">
+                    </div>
+
+                    <div class="inputForm">
+                        <label for="image">Imagen de perfil:</label>
+                        <input type="file" name="image" id="image">
+                    </div>
+
+                    <div class="butonP">
+                        <button type="submit" class="buton"> Registrarme</button>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" id="cbox1" value="first_checkbox" class="checkbox" required/> Al registrarse acepta nuestro <a href="#" style="color: #7b3ec8;">términos y condiciones</a> 
+                    </label>
+
+                </form>
+            </div>
+            <div class="login-descripcion item-flex">
+                <h2>¿Ya tienes cuenta?</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam repudiandae maxime et reiciendis, nemo dolores, facilis excepturi rem necessitatibus voluptates a officia accusantium possimus impedit ipsum, temporibus similique hic id?</p>
+                <button type="submit" class="butonn"><a href="/user/login"> Iniciar Sesión</a></button>
+            </div>
+        </section> -->
+
+    </div>
+</main>
+<!--Fin Cuerpo-->
+
+    <!--Pie de Página-->
+    <%- include('../partials/footer.ejs') %>
+     <!--Fin Pie de Página-->
+</body>
+</html>
