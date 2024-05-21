@@ -11,7 +11,6 @@ const port = 3000;
 
 const methodOverride = require('method-override');
 
-const mainRoutes = require('./src/routes/mainRoutes');
 const productsRoutes = require('./src/routes/productsRoutes');
 const usersController = require('./src/routes/usersRoutes');
 const userLogged = require('./src/middlewares/userLoggedMiddleware');
@@ -44,7 +43,6 @@ app.set('views',path.join(__dirname, 'src', 'views'));
 app.use(userLogged) //Es importante que la session se inicialice antes
 
 //Configuracion de rutas
-app.use('/',mainRoutes);
 
 /*
 app.get('/', (req, res)=>{

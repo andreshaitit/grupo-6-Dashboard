@@ -8,7 +8,6 @@ const update = require('../middlewares/multer');
 const validations = require('../middlewares/validateProduct');
 const isLogged = require('../middlewares/authMiddleware');
 const isAdmin = require('../middlewares/adminRequired');
-const { Router } = require('express');
 
 /*** GET ALL PRODUCTS ***/ 
 router.get('/list', productsController.list);
@@ -21,14 +20,12 @@ router.get('/brand/:category', productsController.listBrandsByCategory);
 router.get('/search', productsController.search);
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create', isLogged, isAdmin, productsController.create);
 router.post('/create', isLogged, isAdmin, update.single('image'), validations, productsController.keep);
 
 /*** GET ONE PRODUCT ***/ 
 router.get('/detail/:id', productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/ 
-router.get('/edit/:id', isLogged, isAdmin, productsController.edit);
 router.put('/edit/:id', isLogged, isAdmin, update.single('image'), validations, productsController.update);
 
 /*** DELETE ONE PRODUCT***/
