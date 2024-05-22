@@ -179,7 +179,7 @@ const productsController = {
     detail: async (req, res) => {
         try {
             let result = await db.Producto.findByPk(req.params.id, {
-                include: [{ association: "brand" }, { association: "category" }, { association: "state" }]
+                include: [{ association: "brand" }, { association: "category" }, { association: "product_statuses" }]
             });
             
             if (!result) {
