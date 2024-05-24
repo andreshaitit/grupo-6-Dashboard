@@ -2,21 +2,17 @@ import React from 'react';
 import imagenFondo from '../assets/images/mandalorian.jpg';
 import GenresInDb from './GenresInDb';
 import ContentRowMovies from './ContentRowMovies';
-function ContentRowTop(){
+function ContentRowTop({data}){
     return(
         <React.Fragment>
 				{/*<!-- Content Row Top -->*/}
 				<div className="container-fluid">
 					<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
+						<h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
 					</div>
-				
-					{/*<!-- Content Row Movies-->*/}
-					<ContentRowMovies />
-					{/*<!-- End movies in Data Base -->*/}
-					
+
+					<ContentRowMovies data={data} />					
 	
-					{/*<!-- Content Row Last Movie in Data Base -->*/}
 					<div className="row">
 						{/*<!-- Last Movie in DB -->*/}
 						<div className="col-lg-6 mb-4">
@@ -33,15 +29,11 @@ function ContentRowTop(){
 								</div>
 							</div>
 						</div>
-						{/*<!-- End content row last movie in Data Base -->*/}
 
-						{/*<!-- Genres in DB -->*/}
-						<GenresInDb />
-
-						{/*<!--End Genres In Db-->*/}		
+						<GenresInDb data={data} />
+	
 					</div>
 				</div>
-				{/*<!--End Content Row Top-->*/}
 
         </React.Fragment>
     )
