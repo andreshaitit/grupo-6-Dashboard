@@ -78,9 +78,16 @@ const productsController = {
             // Desordena el array de productos utilizando la función de comparación aleatoria
             products.sort(compareRandom);
 
-            const categories = await db.Categoria.findAll()
-    
-            res.status(200).json({products: products, type:"success"});
+            // Obtén todas las categorías
+            const categories = await db.Categoria.findAll();
+
+            // Crear objeto countByCategory
+            const countByCategory = {};
+            categories.forEach(category => {
+                countByCategory[category.name] = products.filter(product => product.id_category === category.id).length;
+            });
+        
+            res.status(200).json({count: products.length, countByCategory, products: products, type:"success"});
         } catch (error) {
             console.log(error);
             return res.status(500).json({ error: "Error al buscar productos" });
@@ -179,7 +186,7 @@ const productsController = {
     detail: async (req, res) => {
         try {
             let result = await db.Producto.findByPk(req.params.id, {
-                include: [{ association: "brand" }, { association: "category" }, { association: "state" }]
+                include: [{ association: "brand" }, { association: "category" }, { association: "product_statuses" }]
             });
             
             if (!result) {
