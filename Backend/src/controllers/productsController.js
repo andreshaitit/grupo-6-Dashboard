@@ -123,9 +123,10 @@ ORDER BY total_amount desc; */
                 ],
                 attributes: [
                     'id_product',
+                    'name',
                     [sequelize.fn('SUM', sequelize.col('order_details.amount')), 'total_amount']
                 ],
-                group: ['Producto.id_product'],
+                group: ['Producto.id_product', 'Producto.name'],
                 order: [[sequelize.literal('total_amount'), 'DESC']],
                 limit: 10,  // Limitar a los 10 primeros productos
                 subQuery: false, // Asegura que el limit se aplique correctamente
