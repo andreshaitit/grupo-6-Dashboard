@@ -11,12 +11,21 @@ const usersController = {
   allUsers: async function (req, res) {
     //res.sendFile(path.join(__dirname, '../views/register.ejs'));
     // res.render("./users/register");
-    const users = await db.Usuario.findAll();
+    const users = await db.Usuario.findAll({attributes:{
+      include:[
+        [
+          sequelize.literal(
+            `CONCAT('${req.protocol}://${req.get('host')}/images/users/', image)`
+          ),
+          "imageUrl",
+        ],]
+    }});
     res.json(users)
   },
   register: function (req, res) {
     //res.sendFile(path.join(__dirname, '../views/register.ejs'));
     res.render("./users/register");
+    // `${req.protocol}://${req.get('host')}/uploads/`
   },
 
   processRegister: async function (req, res) {

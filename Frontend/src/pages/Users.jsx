@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 const Users = () => {
   const [users, setUsers] = useState([])
   const navigate = useNavigate();
-  
+
   const allUser = () => {
     axios.get('http://localhost:3000/user/users')
     .then(function (response) {
@@ -21,7 +21,7 @@ const Users = () => {
       // siempre sera executado
     });
   }
-  
+
   const deleteUser = (id) => {
    axios.delete(`http://localhost:3000/user/delete/${id}`)
    .then((response) => {
@@ -35,20 +35,22 @@ const Users = () => {
     allUser()
   });
   }
-  
+
   useEffect(() => {
     allUser()
   }, [])
-  
-  
+
   const headers = [
     { title: "Nombre", prop: "firstName" },
     { title: "Apellido", prop: "lastName" },
     { title: "Email", prop: "email" },
-    { title: "Categoria", prop: "category", cell: (row) => (
-      <span> {row.category === 1 ? "Admin" : "Comprador" } </span>
-    ), },
-    { title: "Creacion", prop: "fecha_creacion" },
+    {
+      title: "Categoria",
+      prop: "category",
+      cell: (row) => (
+        <span> {row.category === 1 ? "Admin" : "Comprador"} </span>
+      ),
+    },
     {
       title: "Acciones",
       prop: "button",
@@ -56,11 +58,16 @@ const Users = () => {
         <div>
           <button
             className="btn btn-warning mr-3"
-            onClick={() => navigate(`/editar-usuario/${row.userId}`)}
+            onClick={() =>
+              navigate(`/agregar-usuario/`, { state: { data: row } } )
+            }
           >
             Editar
           </button>
-          <button className="btn btn-danger" onClick={()=>deleteUser(row.userId)}>
+          <button
+            className="btn btn-danger"
+            onClick={() => deleteUser(row.userId)}
+          >
             Eliminar
           </button>
         </div>

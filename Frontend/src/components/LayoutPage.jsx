@@ -1,7 +1,7 @@
 import React from 'react'
 import DataTable from './DataTable'
 
-const LayoutPage = ({title, textBtnAdd, body, headers, linkBtnAdd}) => {
+const LayoutPage = ({ title, textBtnAdd, body, headers, linkBtnAdd }) => {
   return (
     <div className='container-fluid p-5'>
         <div className="row">
