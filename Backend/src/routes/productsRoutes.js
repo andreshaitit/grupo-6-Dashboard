@@ -30,6 +30,10 @@ router.get('/detail/:id', productsController.detail);
 router.put('/edit/:id', isLogged, isAdmin, update.single('image'), validations, productsController.update);
 
 /*** DELETE ONE PRODUCT***/
+<<<<<<< Updated upstream
 router.delete('/delete/:id', isLogged, isAdmin, productsController.delete);
+=======
+router.delete('/delete/:id', productsController.delete); 
+>>>>>>> Stashed changes
 
 module.exports = router
