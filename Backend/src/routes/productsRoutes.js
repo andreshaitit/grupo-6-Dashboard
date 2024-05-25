@@ -9,8 +9,9 @@ const validations = require('../middlewares/validateProduct');
 const isLogged = require('../middlewares/authMiddleware');
 const isAdmin = require('../middlewares/adminRequired');
 
-/*** GET ALL PRODUCTS ***/ 
+/*** GET ALL PRODUCTS ***/
 router.get('/list', productsController.list);
+router.get('/sold', productsController.listPurchasedProducts);
 
 /*** GET ALL PRODUCTS BY CATEGORY  ***/
 router.get('/category/:category', productsController.listByCategory);
@@ -19,16 +20,16 @@ router.get('/brand/:category', productsController.listBrandsByCategory);
 /*** GET ALL PRODUCT SEARCHS ***/
 router.get('/search', productsController.search);
 
-/*** CREATE ONE PRODUCT ***/ 
+/*** CREATE ONE PRODUCT ***/
 router.post('/create', isLogged, isAdmin, update.single('image'), validations, productsController.keep);
 
-/*** GET ONE PRODUCT ***/ 
+/*** GET ONE PRODUCT ***/
 router.get('/detail/:id', productsController.detail);
 
-/*** EDIT ONE PRODUCT ***/ 
+/*** EDIT ONE PRODUCT ***/
 router.put('/edit/:id', isLogged, isAdmin, update.single('image'), validations, productsController.update);
 
 /*** DELETE ONE PRODUCT***/
-router.delete('/delete/:id', isLogged, isAdmin, productsController.delete); 
+router.delete('/delete/:id', isLogged, isAdmin, productsController.delete);
 
 module.exports = router
