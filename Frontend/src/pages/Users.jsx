@@ -67,6 +67,8 @@ const Users = () => {
       ),
     },
   ];
+  
+  console.log(users)
 
   return (
     <LayoutPage
