@@ -14,7 +14,9 @@ let genres = [
     {genre: 'Musical'}
 ]
 
-function GenresInDb(){
+function GenresInDb({data}){
+    
+    console.log(data)
     return (
         <React.Fragment>
                 {/*<!-- Categories in DB -->*/}
@@ -26,9 +28,9 @@ function GenresInDb(){
                         <div className="card-body">
                             <div className="row">
                                 {
-                                    genres.map((genre,index)=>{
-                                        return  <Genre  {...genre}  key={index} />
-                                    })
+                                    data.countByCategory.map((categorie,index)=>(
+                                        <Genre categorie={categorie}  key={index} />
+                                    ))
                                 }
                             </div>
                         </div>

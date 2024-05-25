@@ -25,7 +25,8 @@ let user = {
 let cardProps = [productInDataBase,amount,user];
 
 
-function ContentRowTop(){
+function ContentRowTop({data}){
+    console.log(data)
     return (
         <React.Fragment>
         {/*<!-- Content Row -->*/}
@@ -34,7 +35,7 @@ function ContentRowTop(){
                 cardProps.map((producto,index)=>{
                     return <SmallCard  {...producto}  key= {index}/>
                 })
-            }      
+            }
         </div>
         </React.Fragment>
     )

@@ -1,11 +1,11 @@
 import React from 'react';
 import SideBar from './SideBar';
-import ContentWrapper from './ContentWrapper';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Users from '../pages/Users';
 import Products from '../pages/Products';
 import AddUsers from '../pages/AddUsers';
-import EditUsers from '../pages/EditUsers';
+import Main from './Main';
 
 function App() {
   return (
@@ -15,11 +15,10 @@ function App() {
               
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<ContentWrapper />}></Route>
+              <Route path='/' element={<Main />}></Route>
               <Route path='/usuarios' element={<Users />}></Route>
               <Route path='/productos' element={<Products />}></Route>
               <Route path='/agregar-usuario' element={<AddUsers />}></Route>
-              <Route path='/editar-usuario/:id' element={<EditUsers />}></Route>
             </Routes>
           </BrowserRouter>
         </div>
