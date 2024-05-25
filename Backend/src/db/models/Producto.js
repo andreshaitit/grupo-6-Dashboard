@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
 
     //Definimos las relaciones
     Producto.associate = function (models) {
-        
+
         //Relacion pertenece a una marca
         Producto.belongsTo(models.Marca, {
             as: "brand",
@@ -92,6 +92,12 @@ module.exports = (sequelize, DataTypes) => {
             as: "product_statuses",
             foreignKey: "id_state"
         })
+
+         //Relacion pertenece a muchos detalles de orden
+         Producto.hasMany(models.DetalleOrden, {
+            as: "order_details",
+            foreignKey: "id_product"
+        });
     }
 
     return Producto;
