@@ -63,7 +63,9 @@ const Productos = () => {
         <div>
           <button
             className="btn btn-warning mr-3"
-            onClick={() => navigate(`/editar-producto/${row.userId}`)}
+            onClick={() =>
+              navigate(`/agregar-producto/`, { state: { data: row } } )
+            }
           >
             Editar
           </button>
@@ -89,6 +91,7 @@ const Productos = () => {
       textBtnAdd={"Agregar producto"}
       headers={headers}
       body={products}
+      linkBtnAdd={'/agregar-producto'}
     />
   );
 };

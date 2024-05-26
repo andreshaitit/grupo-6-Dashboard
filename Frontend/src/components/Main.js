@@ -8,6 +8,7 @@ import axios from "axios";
 
 function Main() {
   const [data, setData] = useState([]);
+  const [dataTable, setDataTable] = useState([])
   const [loading, setLoading] = useState(true);
 
   const allData = () => {
@@ -26,12 +27,27 @@ function Main() {
         setLoading(false);
       });
   };
+  const allDataTable = () => {
+     axios
+      .get("http://localhost:3000/product/sold")
+      .then(function (response) {
+        // manejar respuesta exitosa
+        setDataTable(response.data);
+      })
+      .catch(function (error) {
+        // manejar error
+        console.log(error);
+      })
+      .finally(function () {
+      });
+  };
 
   useEffect(() => {
     allData();
+    allDataTable();
   }, []);
   
-  console.log(data)
+  console.log(dataTable)
   
   return (
     <React.Fragment>
@@ -41,9 +57,8 @@ function Main() {
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             <TopBar />
-            <ContentRowTop data={data} />
-            <Movie />
-            <Footer />
+            <ContentRowTop data={data} dataTable={dataTable} />
+            <Movie dataTable={dataTable} />
           </div>
         </div>
       )}

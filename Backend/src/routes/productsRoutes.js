@@ -21,7 +21,10 @@ router.get('/brand/:category', productsController.listBrandsByCategory);
 router.get('/search', productsController.search);
 
 /*** CREATE ONE PRODUCT ***/
-router.post('/create', isLogged, isAdmin, update.single('image'), validations, productsController.keep);
+router.get('/create', productsController.create);
+
+/*** CREATE ONE PRODUCT ***/
+router.post('/create', update.single('image'), productsController.keep);
 
 /*** GET ONE PRODUCT ***/
 router.get('/detail/:id', productsController.detail);
