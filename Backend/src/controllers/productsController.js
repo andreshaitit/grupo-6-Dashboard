@@ -261,6 +261,19 @@ ORDER BY total_amount desc; */
             return res.status(500).json({ error: "Error interno del servidor" });
         }
     },    // FUNCIONAL
+    create: async (req,res) => {
+        try{
+            const categorias = await db.Categoria.findAll()
+            const estados = await db.EstadoProducto.findAll()
+            const marcas = await db.Marca.findAll()
+
+            //res.json({categorias: categorias, estados: estados});
+            return res.status(200).json({marcas,categorias,estados});
+        } catch (error){
+            console.log(error);
+            return res.status(500).json({ error:"Error interno del ser"})
+        }
+    },
 
     keep: async (req, res) =>{
 

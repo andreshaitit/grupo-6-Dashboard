@@ -77,6 +77,7 @@ const FormUser = ({ dataEdit }) => {
     }
   }, []);
 
+  console.log(dataEdit);
   return (
     <form onSubmit={crearUsuario}>
       <label className="form-label mt-3">Nombre</label>
@@ -189,7 +190,7 @@ const FormUser = ({ dataEdit }) => {
             Cancelar
           </button>
           <button className="btn btn-primary mt-3" type="submit">
-            {dataEdit === 0 ? "Guardar usuario" : "Editar usuario"}
+            {dataEdit ? "Editar usuario" : "Guardar usuario"}
           </button>
         </div>
       </div>

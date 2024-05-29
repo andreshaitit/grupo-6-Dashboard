@@ -2,10 +2,8 @@ import React from 'react';
 import imagenFondo from '../assets/images/mandalorian.jpg';
 import GenresInDb from './GenresInDb';
 import ContentRowMovies from './ContentRowMovies';
-function ContentRowTop({data}){
-	const {products} = data;
-	const lastProduct = products[products.length - 1];
-	console.log(lastProduct)
+function ContentRowTop({data, dataTable}){
+	const {top} = dataTable;
     return(
         <React.Fragment>
 				{/*<!-- Content Row Top -->*/}
@@ -25,9 +23,9 @@ function ContentRowTop({data}){
 								</div>
 								<div className="card-body">
 									<div className="text-center">
-										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct.imageUrl} alt=" Star Wars - Mandalorian "/>
+										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} alt=" Star Wars - Mandalorian "/>
 									</div>
-									<p>{lastProduct.name}</p>
+									<p>{top.name}</p>
 									<a className="btn btn-danger" target="_blank" rel="nofollow" href="/">Ver producto</a>
 								</div>
 							</div>

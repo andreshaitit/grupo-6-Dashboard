@@ -6,6 +6,7 @@ import Users from '../pages/Users';
 import Products from '../pages/Products';
 import AddUsers from '../pages/AddUsers';
 import Main from './Main';
+import AddProduct from '../pages/AddProduct';
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
             <Routes>
               <Route path='/' element={<Main />}></Route>
               <Route path='/usuarios' element={<Users />}></Route>
-              <Route path='/productos' element={<Products />}></Route>
               <Route path='/agregar-usuario' element={<AddUsers />}></Route>
+              <Route path='/productos' element={<Products />}></Route>
+              <Route path='/agregar-producto' element={<AddProduct />}></Route>
             </Routes>
           </BrowserRouter>
         </div>

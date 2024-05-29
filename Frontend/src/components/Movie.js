@@ -1,9 +1,41 @@
 import { DatatableWrapper, TableBody, TableHeader } from "react-bs-datatable";
 import { Col, Row, Table } from "react-bootstrap";
 
-function Movie() {
-	const body = [];
-	const headers = [];
+function Movie({dataTable}) {
+  const headers = [
+    { title: "ID", prop: "id_product" },
+    { title: "Nombre", prop: "name" },
+    { title: "Unidades Vendidas", prop: "total_amount" },
+    // {
+    //   title: "Categoria",
+    //   prop: "category",
+    //   cell: (row) => (
+    //     <span> {row.category === 1 ? "Admin" : "Comprador"} </span>
+    //   ),
+    // },
+    // {
+    //   title: "Acciones",
+    //   prop: "button",
+    //   cell: (row) => (
+    //     <div>
+    //       <button
+    //         className="btn btn-warning mr-3"
+    //         onClick={() =>
+    //           navigate(`/agregar-usuario/`, { state: { data: row } } )
+    //         }
+    //       >
+    //         Editar
+    //       </button>
+    //       <button
+    //         className="btn btn-danger"
+    //         onClick={() => deleteUser(row.userId)}
+    //       >
+    //         Eliminar
+    //       </button>
+    //     </div>
+    //   ),
+    // },
+  ];
   return (
     <div className="px-4">
       {/*<!-- PRODUCTS LIST -->*/}
@@ -11,7 +43,7 @@ function Movie() {
 
       {/*<!-- DataTales Example -->*/}
       <DatatableWrapper
-        body={body}
+        body={dataTable.products}
         headers={headers}
         paginationOptionsProps={{
           initialState: {
