@@ -63,10 +63,6 @@ const productsController = {
 
     list: async (req, res) => {
         try {
-<<<<<<< Updated upstream
-            let products = await db.Producto.findAll();
-
-=======
             let products = await db.Producto.findAll({attributes:{
                 include:[
                   [
@@ -78,8 +74,7 @@ const productsController = {
               }});
             let categories = await db.Categoria.findAll(); // Añade esta línea
             let users = await db.Usuario.findAll();
-    
->>>>>>> Stashed changes
+
             if (!products || products.length === 0) {
                 return res.status(404).json({ error: "No se encontraron productos" });
             }
@@ -100,13 +95,8 @@ const productsController = {
                 let count = products.filter(product => product.id_category === category.id).length;
                 countByCategory.push({name: category.name, count: count});
             });
-<<<<<<< Updated upstream
-
-            res.status(200).json({count: products.length, countByCategory, products: products, type:"success"});
-=======
         
             res.status(200).json({countProducts: products.length, countByCategory, products: products, categories, usersCount : users.length ,type:"success"});
->>>>>>> Stashed changes
         } catch (error) {
             console.log(error);
             return res.status(500).json({ error: "Error al buscar productos" });
